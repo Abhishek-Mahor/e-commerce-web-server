@@ -12,7 +12,7 @@ const cors = require('cors');
 
 const app = express();
 app.use(cors({
-    origin: ["http://localhost:5173", "http://localhost:5174"],
+    origin: ["https://e-commerce-st.netlify.app/"],
     credentials: true
     
 }))  
