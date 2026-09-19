@@ -15,9 +15,9 @@ const cors = require('cors');
 const app = express();
 
 // Allowed origins
-const allowedOrigins = [
-  "https://e-commerce-st.netlify.app",// production frontend
-  "http://localhost:5173"   // development frontend
+const allowedOrigins = [             
+  "https://e-commerce-st.netlify.app", // production frontend
+  "http://localhost:5173"  // development frontend
 ];
 
 // CORS middleware
@@ -37,7 +37,7 @@ app.use(cors({
 
 
 app.use(cookieParser());
-app.use(express.json());
+app.use(express.json());  
 
 
 
