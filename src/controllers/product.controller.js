@@ -32,7 +32,7 @@ function addProduct(req, res) {
 // Get all products
 function getAllProducts(req, res) {
     console.log('GET /api/products', 'readyState=', mongoose.connection.readyState);
-    product.find({})
+    product.find({}).lean()
         .then(products => {
             console.log('GET /api/products result count=', products.length);
             res.status(200).json(products);
