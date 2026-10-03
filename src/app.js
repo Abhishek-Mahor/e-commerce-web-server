@@ -1,12 +1,12 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
-const authRoutes = require('./routes/user.auth.route');
-const productRoutes = require('./routes/product.route');
-const adminRoutes = require('./routes/admin.route');
-const cartRoutes = require('./routes/cart.route');
-const orderRoutes = require('./routes/order.route');
-const addressRoutes = require('./routes/user.addres.route');
-const stylistRoutes = require('./routes/stylist.route');
+const authRoutes = require('./routes/user/user.auth.route');
+const productRoutes = require('./routes/user/product.route');
+const adminRoutes = require('./routes/admin/admin.route');
+const cartRoutes = require('./routes/user/cart.route');
+const orderRoutes = require('./routes/user/order.route');
+const addressRoutes = require('./routes/user/user.addres.route');
+const stylistRoutes = require('./routes/user/stylist.route');
 const cors = require('cors');
 
 

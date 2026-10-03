@@ -1,6 +1,6 @@
-const Order = require('../models/order.model');
-const User = require('../models/user.model');
-const Product = require('../models/product.model');
+const Order = require('../../models/order.model');
+const User = require('../../models/user.model');
+const Product = require('../../models/product.model');
 
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const product = require("../models/product.model");
 
-// Add a new product
+// Add a new product for admin
 function addProduct(req, res) { 
     const { name,size,color, description, price ,stock} = req.body;
 

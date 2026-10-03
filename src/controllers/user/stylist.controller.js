@@ -1,4 +1,4 @@
-const Product = require("../models/product.model");
+const Product = require("../../models/product.model");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const axios = require('axios');
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
@@ -13,15 +13,15 @@ async function suggestOutfit(req, res) {
     const { occasion, weather } = req.body;
 
     if (!occasion || !weather) {
-      return res.status(400).json({ 
-        success: false, 
-        message: "Occasion and weather are required." 
+      return res.status(400).json({
+        success: false,
+        message: "Occasion and weather are required."
       });
     }
 
     // Get products from database
     const products = await Product.find({});
-    
+
     // Prepare a clean list of products for Gemini to analyze
     const productCatalog = products.map(p => ({
       id: p._id.toString(),
@@ -52,16 +52,16 @@ Return your response STRICTLY in the following JSON format:
 }
 
 Ensure the output is valid, parsable JSON and nothing else.`;
-     
+
     // Call Gemini API requesting JSON response
-    const model = genAI.getGenerativeModel({ 
+    const model = genAI.getGenerativeModel({
       model: "gemini-2.5-flash",
       generationConfig: { responseMimeType: "application/json" }
     });
-    
+
     const result = await model.generateContent(promptgemini);
     const responseText = result.response.text();
-    
+
     let clothsuggestion = "";
     let recommendedProducts = [];
 
@@ -69,7 +69,7 @@ Ensure the output is valid, parsable JSON and nothing else.`;
       const parsedData = JSON.parse(responseText);
       clothsuggestion = parsedData.clothsuggestion || "";
       const recommendedIds = parsedData.recommendedProductIds || [];
-      
+
       // Filter database products that match the recommended IDs
       recommendedProducts = products.filter(p => recommendedIds.includes(p._id.toString()));
     } catch (parseError) {
@@ -80,26 +80,26 @@ Ensure the output is valid, parsable JSON and nothing else.`;
     console.log("Outfit suggestions and product matches generated successfully");
 
     // Return response
-    return res.json({ 
+    return res.json({
       clothsuggestion,
       recommendedProducts,
-      success: true 
+      success: true
     });
   } catch (error) {
     console.error("Error in suggestOutfit:", error);
-    return res.status(500).json({ 
-      success: false, 
+    return res.status(500).json({
+      success: false,
       message: "Failed to generate outfit suggestion.",
-      error: error.message 
+      error: error.message
     });
   }
 }
 
-    
 
-   
 
-   
+
+
+
 
 
 

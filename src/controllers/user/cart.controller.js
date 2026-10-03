@@ -1,5 +1,5 @@
-const Cart = require('../models/user.cart.model');
-const Product = require('../models/product.model');
+const Cart = require('../../models/user.cart.model');
+const Product = require('../../models/product.model');
 
 // Helper to format cart response
 async function formatCart(cart) {
